@@ -4,6 +4,8 @@ class Word < ActiveRecord::Base
 
   accepts_nested_attributes_for :answers
 
+  scope :random_words, -> {order('RAND()')}
+
   validates :category_id, presence: true
   validates :content, presence: true
 end
