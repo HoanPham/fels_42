@@ -5,11 +5,17 @@
       <section class="user_info">
         <%= render 'shared/user_info' %>
       </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
     </aside>
     <div class="col-md-8">
       <%= link_to "Words", words_path, class: "btn btn-default list-words" %>
       <%= link_to "Lessons", categories_path, class: "btn btn-default list-lessons" %>
-      <h3>Activities</h3><hr>
+      <section>
+          <h3>Activities</h3><hr>
+          <%= render 'shared/feed' %> 
+      </section>
     </div>
   </div>
 <% else %>
