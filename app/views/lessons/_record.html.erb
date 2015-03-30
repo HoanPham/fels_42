@@ -1,0 +1,16 @@
+<section class="record" id="<%= f.object.word.id %>">
+  <div class="col-md-4">
+    <span><%= f.object.word.content %></span>
+    <%= f.hidden_field :word_id, autocomplete: "off" %>
+  </div>
+  <div class="col-md-6">
+    <div class="btn-group" data-toggle="buttons">
+      <% f.object.word.answers.each do |answer| %>
+          <%= f.label :remember_me, class: "btn btn-primary check_answer" do %>
+            <%= f.radio_button :answer_id, answer.id %><%= answer.content %>
+          <% end %>
+          <br>
+      <% end %>
+    </div>
+  </div>
+</section>

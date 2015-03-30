@@ -15,3 +15,24 @@
 //= require bootstrap
 //= require turbolinks
 //= require_tree .
+$(document).ready(function(){
+  $('body').on('click','label.check_answer',function(){
+    $(this).children().attr("checked", "true");
+    $(this).siblings().children().removeAttr("checked");
+  });
+  $('body').on('click', '.btn-next', function(element){
+    nextWord($(this).data("current-question"), this);
+  });
+});
+
+function nextWord(wordCount,element){
+  if(wordCount < 19){
+    $("form.new_lesson > section.record").eq(wordCount).css({"display" : "none"});
+    $("form.new_lesson > section.record").eq(wordCount+1).css({"display" : "block"});
+    $(element).parent().html("<button class=\"btn btn-success btn-block btn-next\" data-current-question='"+(wordCount + 1)+"'>Next</button>");
+  } 
+  else{
+    $(element).parent().remove();
+    $("form.new_lesson input.btn-submit").css({"display" : "block"})
+  } 
+}
