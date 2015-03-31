@@ -22,11 +22,14 @@ Rails.application.routes.draw do
     resource :following, only: [:show]
     resource :followers, only: [:show]
   end
-  resources :categories, only: [:index, :create, :destroy] do
+  resources :categories, only: [:index, :create, :destroy, :show, :edit, :update] do
     resources :lessons
   end
   resources :words, only: [:index, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  namespace :admin do
+    resources :categories, :users, :words
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

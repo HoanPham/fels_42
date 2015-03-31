@@ -29,17 +29,22 @@
 #     category.words.create! content: "Word #{category.id}-#{n}"
 #   }
 # end
-words = Word.all
-4.times do |n|
-  words.each { |word|
-    if n == 1
-      right = 1
-    else 
-      right = 0
-    end
-    word.answers.create!(
-      content: "Answer #{word.id}-#{n+1}",
-      is_right: right
-    )
-  }
-end
+User.create!(full_name:  "admin",
+             email: "admin@gmail.com",
+             password:              "10071991",
+             password_confirmation: "10071991",
+             admin: true)
+# words = Word.all
+# 4.times do |n|
+#   words.each { |word|
+#     if n == 1
+#       right = 1
+#     else 
+#       right = 0
+#     end
+#     word.answers.create!(
+#       content: "Answer #{word.id}-#{n+1}",
+#       is_right: right
+#     )
+#   }
+# end

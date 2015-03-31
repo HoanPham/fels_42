@@ -1,32 +1,34 @@
 <% provide(:title, "Home") %>
 <% if user_signed_in? %>
-  <div class="row">
-    <aside class="col-md-4">
-      <section class="user_info">
-        <%= render 'shared/user_info' %>
-      </section>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
-    </aside>
-    <div class="col-md-8">
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= render 'shared/user_info' %>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+  <div class="col-md-8">
+    <% unless current_user.admin? %>
       <%= link_to "Words", words_path, class: "btn btn-default list-words" %>
       <%= link_to "Lessons", categories_path, class: "btn btn-default list-lessons" %>
-      <section>
-          <h3>Activities</h3><hr>
-          <%= render 'shared/feed' %> 
-      </section>
-    </div>
+    <% end %>
+    <section>
+      <h3>Activities</h3>
+      <%= render 'shared/feed' %> 
+    </section>
   </div>
+</div>
 <% else %>
-  <div class="center jumbotron">
-    <h1>Welcome to Fram gia E-learning system</h1>
-    <h2>
-      This is the home page for the
-      <a href="http://www.framgia.vn/">Framgia</a>
-      E-learning system.
-    </h2>
-    <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
-  </div>
-  <%= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org/' %>
+<div class="center jumbotron">
+  <h1>Welcome to Fram gia E-learning system</h1>
+  <h2>
+    This is the home page for the
+    <a href="http://www.framgia.vn/">Framgia</a>
+    E-learning system.
+  </h2>
+  <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+</div>
+<%= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org/' %>
 <% end %>
